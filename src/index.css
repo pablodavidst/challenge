@@ -1,0 +1,32 @@
+body {
+  margin: 0;
+  font-family: 'Montserrat';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.divext{
+    background: #084f85;
+    padding: 50px;
+}
+
+.divint{
+  background: #003b67;
+}
+
+.bot1{
+  background:#17aa8d;
+}
+
+.bot2{
+  background: #0b548b;
+}
+
+.titulo{
+  color:white
+}
