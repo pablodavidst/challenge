@@ -13,20 +13,72 @@ code {
 .divext{
     background: #084f85;
     padding: 50px;
+    color:white;
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+input{
+  background: #003b67;
+  color:white;
+  border:solid 1px white;
+  padding:6px
+}
+
+.divForm{
+  display: flex;
+  padding-right: 100px;
+  padding-left: 100px;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .divint{
   background: #003b67;
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .bot1{
   background:#17aa8d;
+  color:white;
+  padding: 10px;
+  font-size: x-large;
+}
+
+.c-fija{
+  display: flex;
+  padding-right: 100px;
+  padding-left: 100px;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .bot2{
   background: #0b548b;
+  color:white;
+  padding: 10px;
+  font-size: x-large;
 }
 
 .titulo{
-  color:white
+  color:white;
+  padding:15px;
+  font-size: xx-large;
+  font-weight: 900;
+  display: inline-block;
+}
+
+.c-slider{
+  width: 80%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.et-mm{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
