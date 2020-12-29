@@ -10,6 +10,17 @@ export default function Simulador(){
     const [plazo,setPlazo]=useState(3)
     const [cuotaFija,setCuotaFija]=useState(0)
 
+
+    useEffect(()=>{
+        
+        if (inputsValidos(plazo,monto)){  
+            setCuotaFija(calcularCuotaFija(plazo,monto))
+        }else{
+            setCuotaFija(null)
+        }
+
+    },[plazo,monto])
+    
     const handleChangeMonto = (e)=>{
         setMonto(e.target.value)
     }
@@ -25,16 +36,6 @@ export default function Simulador(){
     const handleSlideMonto = (valor)=>{
         setMonto(valor)
     }    
-
-    useEffect(()=>{
-        
-        if (inputsValidos(plazo,monto)){  
-            setCuotaFija(calcularCuotaFija(plazo,monto))
-        }else{
-            setCuotaFija(null)
-        }
-
-    },[plazo,monto])
 
     return <div className="divext">
         <div className="divint">
@@ -57,9 +58,9 @@ export default function Simulador(){
                         <Etiquetas min='3' max='24'/>
                     </div>
              </form>
-             {cuotaFija &&<div className="c-detalle">
-                 <div className="c-fija-d">
-                    <h3>CUOTA FIJA POR MES</h3>
+             {cuotaFija && <div className="c-detalle">
+                 <div className="mb-10">
+                     <span className="et-c-fija">CUOTA FIJA POR MES</span>
                      <span className="c-fija-s">{`$ ${imprimirCuota(cuotaFija)}`}</span>
                 </div>
                 <Acciones/>

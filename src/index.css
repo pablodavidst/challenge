@@ -13,7 +13,7 @@ code {
 .divext{
     background: #084f85;
     padding: 50px;
-    color:white;
+    color:#c9d4ee;
     width: 650px;
     margin-left: auto;
     margin-right: auto;
@@ -55,6 +55,7 @@ input{
   font-size: x-large;
   width: 350px;
   font-weight: 700;
+  border:none
 }
 
 .flex{
@@ -75,6 +76,16 @@ input{
   font-weight: 800;
 }
 
+.et-c-fija{
+    display: inline-block;
+    margin-right: 45px;
+    font-weight: bold;
+}
+
+.mb-10{
+    margin-bottom: 10px;
+}
+
 .bot2{
   background: #0b548b;
   color:white;
@@ -83,6 +94,7 @@ input{
   font-size: 15px;
   margin-left:15px;
   font-weight: 700;
+  border:none
 }
 
 .titulo{
