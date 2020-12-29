@@ -1,4 +1,4 @@
-import react, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Acciones from '../componentes/Acciones'
 import Etiquetas from '../componentes/Etiquetas'
 import Slider from 'rc-slider';
@@ -20,20 +20,20 @@ export default function Simulador(){
         }
 
     },[plazo,monto])
-    
+
     const handleChangeMonto = (e)=>{
         setMonto(e.target.value)
     }
 
     const handleChangePlazo = (e)=>{
-            setPlazo(e.target.value)
+        setPlazo(e.target.value)
     }    
 
-    const handleSlidePlazo = (valor)=>{
+    const handleChangeSlidePlazo = (valor)=>{
         setPlazo(valor)
     }
 
-    const handleSlideMonto = (valor)=>{
+    const handleChangeSlideMonto = (valor)=>{
         setMonto(valor)
     }    
 
@@ -43,28 +43,33 @@ export default function Simulador(){
              <form>
                     <div className="divForm">
                         <label htmlFor="id-monto">MONTO TOTAL</label>
-                        <input id="id-monto" type="number" min={5000} max={50000} value={monto} onChange={handleChangeMonto}/>
+                        <input id="id-monto" 
+                                type="number" 
+                                required 
+                                min={5000} 
+                                max={50000} 
+                                value={monto} 
+                                onChange={handleChangeMonto}/>
                     </div>
                     <div className="c-slider">
-                        <Slider min={5000} max={50000} onChange={handleSlideMonto} value={monto}/>
-                        <Etiquetas min='$ 5.000' max='$ 50.000'/>
+                        <Slider min={5000} max={50000} onChange={handleChangeSlideMonto} value={monto}/>
+                        <Etiquetas min='$ 5.000' max='$ 50.000' ajustarMargenes/>
                     </div>
                     <div className="divForm">
                         <label htmlFor="id-cuotas">PLAZO</label>
-                        <input id="id-cuotas" type="number" min={3} max={24} value={plazo} onChange={handleChangePlazo}/>
+                        <input id="id-cuotas" 
+                                type="number" 
+                                required min={3} 
+                                max={24} 
+                                value={plazo} 
+                                onChange={handleChangePlazo}/>
                     </div>
                     <div className="c-slider">
-                        <Slider min={3} max={24} onChange={handleSlidePlazo} value={plazo}/>
+                        <Slider min={3} max={24} onChange={handleChangeSlidePlazo} value={plazo}/>
                         <Etiquetas min='3' max='24'/>
                     </div>
              </form>
-             {cuotaFija && <div className="c-detalle">
-                 <div className="mb-10">
-                     <span className="et-c-fija">CUOTA FIJA POR MES</span>
-                     <span className="c-fija-s">{`$ ${imprimirCuota(cuotaFija)}`}</span>
-                </div>
-                <Acciones/>
-             </div>}
+             {cuotaFija && <Detalle cuotaFija={cuotaFija}/>}             
              {!cuotaFija && <span className="error">El monto o plazo no es válido. Verifique los valores ingresados</span>}
         </div>
     </div>
@@ -91,4 +96,14 @@ function inputsValidos(plazo,monto){
 
 function imprimirCuota(cuotaFija){
     return cuotaFija.replace(/\d(?=(\d{3})+\.)/g, '$&,')
+}
+
+function Detalle({cuotaFija}){
+    return <div className="c-detalle">
+                <div className="mb-10">
+                    <span className="et-c-fija">CUOTA FIJA POR MES</span>
+                    <span className="c-fija-s">{`$ ${imprimirCuota(cuotaFija)}`}</span>
+                </div>
+                <Acciones/>
+            </div>
 }

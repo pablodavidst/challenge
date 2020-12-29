@@ -1,5 +1,4 @@
-import react, { useState } from 'react'
-
+import React from 'react'
 
 export default function Acciones(){
 
