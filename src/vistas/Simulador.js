@@ -10,7 +10,6 @@ export default function Simulador(){
     const [plazo,setPlazo]=useState(3)
     const [cuotaFija,setCuotaFija]=useState(0)
 
-
     useEffect(()=>{
         
         if (inputsValidos(plazo,monto)){  
