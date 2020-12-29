@@ -25,9 +25,11 @@ input{
   background: #003b67;
   color:white;
   border:solid 1px white;
-  padding:6px;
   text-align: center;
-  width:100px ;
+  width:150px ;
+  padding:1px;
+  font-size: 20px;
+  font-weight: 700;
 }
 
 .divForm{
@@ -99,4 +101,9 @@ input{
   background:#043051;
   margin-left:49px;
   margin-right:49px
+}
+
+.error{
+  color:red;
+  padding:10px
 }

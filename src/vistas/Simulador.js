@@ -1,7 +1,7 @@
 import react, { useEffect, useState } from 'react'
 import Acciones from '../componentes/Acciones'
 import Etiquetas from '../componentes/Etiquetas'
-import Slider, { Range } from 'rc-slider';
+import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 
 export default function Simulador(){
@@ -15,7 +15,7 @@ export default function Simulador(){
     }
 
     const handleChangePlazo = (e)=>{
-        setPlazo(e.target.value)
+            setPlazo(e.target.value)
     }    
 
     const handleSlidePlazo = (valor)=>{
@@ -31,7 +31,7 @@ export default function Simulador(){
         if (inputsValidos(plazo,monto)){  
             setCuotaFija(calcularCuotaFija(plazo,monto))
         }else{
-            asignarValoresDefault(plazo,monto,setPlazo,setMonto)
+            setCuotaFija(null)
         }
 
     },[plazo,monto])
@@ -46,7 +46,7 @@ export default function Simulador(){
                     </div>
                     <div className="c-slider">
                         <Slider min={5000} max={50000} onChange={handleSlideMonto} value={monto}/>
-                        <Etiquetas min='$5.000' max='$50.000'/>
+                        <Etiquetas min='$ 5.000' max='$ 50.000'/>
                     </div>
                     <div className="divForm">
                         <label htmlFor="id-cuotas">PLAZO</label>
@@ -57,13 +57,14 @@ export default function Simulador(){
                         <Etiquetas min='3' max='24'/>
                     </div>
              </form>
-             <div className="c-detalle">
-                <div className="c-fija-d">
+             {cuotaFija &&<div className="c-detalle">
+                 <div className="c-fija-d">
                     <h3>CUOTA FIJA POR MES</h3>
-                    { cuotaFija > 0 && <span className="c-fija-s">{`$ ${imprimirCuota(cuotaFija)}`}</span>}
+                     <span className="c-fija-s">{`$ ${imprimirCuota(cuotaFija)}`}</span>
                 </div>
                 <Acciones/>
-             </div>
+             </div>}
+             {!cuotaFija && <span className="error">El monto o plazo no es válido. Verifique los valores ingresados</span>}
         </div>
     </div>
 }
@@ -79,29 +80,11 @@ function calcularCuotaFija(plazo,monto){
 }
 
 function inputsValidos(plazo,monto){
-    if(Number(plazo)>24 || Number(plazo)<3 || Number(monto)<5000 || Number(monto)>50000){
+
+    if (Number(plazo)<3 || Number(plazo)>24 || Number(monto)<5000 || Number(monto)>50000){
         return false
     }else{
         return true
-    }
-}
-
-function asignarValoresDefault(plazo,monto,setPlazo,setMonto){
-
-    if (Number(plazo)<3){
-        setPlazo(3)
-    }
-
-    if(Number(plazo>24)){
-        setPlazo(24)
-    }
-
-    if(Number(monto)<5000){
-        setMonto(5000)
-    }
-
-    if(Number(monto)>50000){
-        setMonto(50000)
     }
 }
 
